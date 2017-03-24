@@ -1,0 +1,22 @@
+{
+  "name": "tox-countries",
+  "version": "0.0.0",
+  "description": "RESTful API for countries based on node.js",
+  "author": "Enrico Hoffmann <dasrick@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasrick/tox-countries.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dasrick/tox-countries/issues"
+  },
+  "homepage": "https://github.com/dasrick/tox-countries#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  }
+}
