@@ -1,0 +1,7 @@
+{
+  "name":"tox-countries",
+  "description":"RESTful API for countries based on node.js",
+  "scripts":{},
+  "env":{},
+  "addons":[]
+}
