@@ -1,6 +1,8 @@
 [![Build Status][travis-image]][travis-url]
 [![dependency Status][david-dep-image]][david-dep-url]
 [![devDependency Status][david-devdep-image]][david-devdep-url]
+[![Heroku Badge][heroku-staging-image]][heroku-staging-url]
+[![Heroku Badge][heroku-production-image]][heroku-production-url]
 [![License][license-image]][license-url]
 
 ***
@@ -44,6 +46,12 @@ $ yarn install
 
 [travis-image]: https://travis-ci.org/dasrick/tox-countries.svg?branch=master
 [travis-url]: https://travis-ci.org/dasrick/tox-countries
+
+[heroku-staging-image]: http://img.shields.io/badge/staging%20to-Heroku-7056bf.svg
+[heroku-staging-url]: https://tox-countries-qa.herokuapp.com/api/v2
+
+[heroku-production-image]: http://img.shields.io/badge/staging%20to-Heroku-7056bf.svg
+[heroku-production-url]: https://tox-countries.herokuapp.com/api/v2
 
 [license-image]: https://img.shields.io/github/license/dasrick/tox-countries.svg?style=flat-square
 [license-url]: https://github.com/dasrick/tox-countries/blob/master/LICENSE
