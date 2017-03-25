@@ -69,18 +69,18 @@ app.use(function (err, req, res, next) {
         return next();
     }
     res.status(500).json({
+        status: 500,
+        message: 'Internal Server Error',
         error: err
-//        pkg: pkg,
-//        CONFIG: CONFIG
     });
 });
 
 // assume 404 since no middleware responded
 app.use(function (req, res) {
     res.status(404).json({
-        url: req.originalUrl,
-        message: 'Sorry, that page does not exist',
-        code: 42
+        status: 404,
+        message: 'Not Found',
+        url: req.originalUrl
     });
 });
 

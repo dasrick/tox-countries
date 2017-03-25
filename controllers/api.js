@@ -6,8 +6,8 @@ var countries = require('../resources/countriesV2');
 
 var notFound = function (res) {
     res.json(404, {
-        message: 'Sorry, that page does not exist ...',
-        code: 42
+        status: 404,
+        message: 'Not Found'
     });
 };
 
