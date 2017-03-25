@@ -50,7 +50,7 @@ $ yarn install
 [heroku-staging-image]: http://img.shields.io/badge/staging%20to-Heroku-7056bf.svg
 [heroku-staging-url]: https://tox-countries-qa.herokuapp.com/api/v2
 
-[heroku-production-image]: http://img.shields.io/badge/staging%20to-Heroku-7056bf.svg
+[heroku-production-image]: http://img.shields.io/badge/production%20to-Heroku-7056bf.svg
 [heroku-production-url]: https://tox-countries.herokuapp.com/api/v2
 
 [license-image]: https://img.shields.io/github/license/dasrick/tox-countries.svg?style=flat-square
