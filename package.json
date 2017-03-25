@@ -25,9 +25,16 @@
     "path": "^0.12.7",
     "serve-favicon": "^2.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1"
+  },
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint": "npm run jscs && npm run jshint",
+    "jscs": "jscs ./server.js ./controllers",
+    "jshint": "jshint ./server.js ./controllers --reporter node_modules/jshint-stylish/index.js"
   }
 }

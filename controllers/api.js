@@ -1,12 +1,14 @@
+'use strict';
+
 var _ = require('lodash');
 var validator = require('validator');
 var countries = require('../resources/countriesV2');
 
 var notFound = function (res) {
     res.json(404, {
-        message: "Sorry, that page does not exist",
-        code: 34
-    })
+        message: 'Sorry, that page does not exist ...',
+        code: 42
+    });
 };
 
 exports.index = function (req, res) {
@@ -14,58 +16,61 @@ exports.index = function (req, res) {
 };
 
 exports.getAll = function (req, res) {
-    res.status(200).json(countries)
+    res.status(200).json(countries);
 };
 
 exports.callingCode = function (req, res) {
-    var calling_code = req.params.callingCode;
-    var country = _.find(countries, function (co) {
-        return validator.isIn(calling_code, co.callingCode)
-    });
-    if (!country) {
+    var callingCode = req.params.callingCode;
+    var countryList = _.reduce(countries, function (result, country) {
+        if (validator.isIn(callingCode, country.callingCodes)) {
+            result.push(country);
+        }
+        return result;
+    }, []);
+    if (countryList.length < 1) {
         notFound(res);
     }
-    res.status(200).json(country)
+    res.status(200).json(countryList);
 };
 
 exports.currency = function (req, res) {
-    var currency_code = req.params.currency_code;
-    var country = _.find(countries, function (co) {
-        return validator.isIn(currency_code.toUpperCase(), co.currency)
-    });
-    if (!country) {
+    var currencyCode = req.params.currencyCode;
+    var countryList = _.reduce(countries, function (result, country) {
+        if (validator.isIn(currencyCode.toUpperCase(), _.map(country.currencies, 'code'))) {
+            result.push(country);
+        }
+        return result;
+    }, []);
+    if (countryList.length < 1) {
         notFound(res);
     }
-    res.status(200).json(country)
+    res.status(200).json(countryList);
 };
 
 exports.region = function (req, res) {
-    var result = [];
-    var region_name = req.params.regionName;
-    var country_region = _.reduce(countries, function (result, country, key) {
-
-        if (country.region.toLowerCase() == region_name.toLowerCase()) {
+    var regionName = req.params.regionName;
+    var countryList = _.reduce(countries, function (result, country) {
+        if (country.region.toLowerCase() === regionName.toLowerCase()) {
             result.push(country);
         }
         return result;
     }, []);
-    if (country_region.length < 1) {
+    if (countryList.length < 1) {
         notFound(res);
     }
-    res.status(200).json(country_region);
+    res.status(200).json(countryList);
 };
 
-exports.subregion = function (req, res, next) {
-    var result = [];
-    var subregion_name = req.params.subregionName;
-    var country = _.reduce(countries, function (result, country, key) {
-        if (country.subregion.toLowerCase() == subregion_name.toLowerCase()) {
+exports.subregion = function (req, res) {
+    var subregionName = req.params.subregionName;
+    var countryList = _.reduce(countries, function (result, country) {
+        if (country.subregion.toLowerCase() === subregionName.toLowerCase()) {
             result.push(country);
         }
         return result;
     }, []);
-    if (country.length < 1) {
+    if (countryList.length < 1) {
         notFound(res);
     }
-    res.status(200).json(country);
+    res.status(200).json(countryList);
 };

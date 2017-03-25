@@ -1,14 +1,16 @@
+'use strict';
+
 var express = require('express');
-var cookieParser = require('cookie-parser');
 var compress = require('compression');
-var session = require('express-session');
-var bodyParser = require('body-parser');
 var logger = require('morgan');
-var errorHandler = require('errorhandler');
-var methodOverride = require('method-override');
-var path = require('path');
+var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var favicon = require('serve-favicon');
+var errorHandler = require('errorhandler');
+var path = require('path');
 
 
 /**
@@ -50,10 +52,12 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.get('/', API.index);
 app.get('/api/', API.index);
 app.get('/api/v2', API.getAll);
+
 app.get('/api/v2/callingcode/:callingCode', API.callingCode);
+app.get('/api/v2/currency/:currencyCode', API.currency);
+
 app.get('/api/v2/region/:regionName', API.region);
 app.get('/api/v2/subregion/:subregionName', API.subregion);
-app.get('/api/v2/currency/:currency_code', API.currency);
 
 /**
  * 500 Error Handler.
@@ -61,39 +65,34 @@ app.get('/api/v2/currency/:currency_code', API.currency);
  */
 app.use(function (err, req, res, next) {
     // treat as 404
-    if (err.message
-        && (~err.message.indexOf('not found')
-        || (~err.message.indexOf('Cast to ObjectId failed')))) {
-        return next()
+    if (err.message && (err.message.indexOf('not found') || err.message.indexOf('Cast to ObjectId failed'))) {
+        return next();
     }
-    // log it
-    // send emails if you want
-    // error page
     res.status(500).json({
-        error: err,
-        pkg: pkg,
-        CONFIG: CONFIG
-    })
+        error: err
+//        pkg: pkg,
+//        CONFIG: CONFIG
+    });
 });
 
 // assume 404 since no middleware responded
 app.use(function (req, res) {
     res.status(404).json({
         url: req.originalUrl,
-        message: "Sorry, that page does not exist",
-        code: 34
-    })
+        message: 'Sorry, that page does not exist',
+        code: 42
+    });
 });
 
 if (app.get('env') === 'development') {
-    app.use(errorHandler())
+    app.use(errorHandler());
 }
 
 /**
  * Start Express server.
  */
 app.listen(app.get('port'), function () {
-    console.log("✔ Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
+    console.log('✔ Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
 module.exports = app;
