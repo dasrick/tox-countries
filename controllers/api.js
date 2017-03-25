@@ -19,6 +19,24 @@ exports.getAll = function (req, res) {
     res.status(200).json(countries);
 };
 
+exports.name = function (req, res) {
+    var countryName = req.params.countryName;
+    console.log(countryName);
+    var countryList = _.reduce(countries, function (result, country) {
+        var nameList = _.map(country.translations, Function.call.bind("".toLowerCase));
+        nameList.push(country.name.toLowerCase());
+        nameList.push(country.nativeName.toLowerCase());
+        if (validator.isIn(countryName.toLowerCase(), nameList)) {
+            result.push(country);
+        }
+        return result;
+    }, []);
+    if (countryList.length < 1) {
+        notFound(res);
+    }
+    res.status(200).json(countryList);
+};
+
 exports.callingCode = function (req, res) {
     var callingCode = req.params.callingCode;
     var countryList = _.reduce(countries, function (result, country) {

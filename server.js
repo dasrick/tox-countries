@@ -51,12 +51,25 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
  */
 app.get('/', API.index);
 app.get('/api/', API.index);
+// All
 app.get('/api/v2', API.getAll);
+// Name
+app.get('/api/v2/name/:countryName', API.name);
+// Code
 
-app.get('/api/v2/callingcode/:callingCode', API.callingCode);
+// List of codes
+
+// Currency
 app.get('/api/v2/currency/:currencyCode', API.currency);
+// Language
 
+// Capital city
+
+// Calling code
+app.get('/api/v2/callingcode/:callingCode', API.callingCode);
+// Region
 app.get('/api/v2/region/:regionName', API.region);
+// SubRegion
 app.get('/api/v2/subregion/:subregionName', API.subregion);
 
 /**
