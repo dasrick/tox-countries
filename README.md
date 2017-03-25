@@ -1,4 +1,5 @@
 [![Build Status][travis-image]][travis-url]
+[![Codacy Badge][codacy-image]][codacy-url]
 [![dependency Status][david-dep-image]][david-dep-url]
 [![devDependency Status][david-devdep-image]][david-devdep-url]
 [![Heroku Badge][heroku-staging-image]][heroku-staging-url]
@@ -46,6 +47,9 @@ $ yarn install
 
 [travis-image]: https://travis-ci.org/dasrick/tox-countries.svg?branch=master
 [travis-url]: https://travis-ci.org/dasrick/tox-countries
+
+[codacy-image]: https://api.codacy.com/project/badge/Grade/d2797b582e0b4b3584313435f55b4acf
+[codacy-url]: https://www.codacy.com/app/dasrick/tox-countries?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dasrick/tox-countries&amp;utm_campaign=Badge_Grade
 
 [heroku-staging-image]: http://img.shields.io/badge/staging%20to-Heroku-7056bf.svg
 [heroku-staging-url]: https://tox-countries-qa.herokuapp.com/api/v2
