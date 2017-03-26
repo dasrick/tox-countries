@@ -11,6 +11,13 @@ var notFound = function (res) {
     });
 };
 
+var responseCountryList = function (res, countryList) {
+    if (countryList.length < 1) {
+        notFound(res);
+    }
+    res.status(200).json(countryList);
+};
+
 exports.index = function (req, res) {
     res.send({message: 'Welcome to my world!'});
 };
@@ -31,10 +38,7 @@ exports.name = function (req, res) {
         }
         return result;
     }, []);
-    if (countryList.length < 1) {
-        notFound(res);
-    }
-    res.status(200).json(countryList);
+    responseCountryList(res, countryList);
 };
 
 exports.callingCode = function (req, res) {
@@ -45,10 +49,7 @@ exports.callingCode = function (req, res) {
         }
         return result;
     }, []);
-    if (countryList.length < 1) {
-        notFound(res);
-    }
-    res.status(200).json(countryList);
+    responseCountryList(res, countryList);
 };
 
 exports.currency = function (req, res) {
@@ -59,10 +60,7 @@ exports.currency = function (req, res) {
         }
         return result;
     }, []);
-    if (countryList.length < 1) {
-        notFound(res);
-    }
-    res.status(200).json(countryList);
+    responseCountryList(res, countryList);
 };
 
 exports.region = function (req, res) {
@@ -73,10 +71,7 @@ exports.region = function (req, res) {
         }
         return result;
     }, []);
-    if (countryList.length < 1) {
-        notFound(res);
-    }
-    res.status(200).json(countryList);
+    responseCountryList(res, countryList);
 };
 
 exports.subregion = function (req, res) {
@@ -87,8 +82,5 @@ exports.subregion = function (req, res) {
         }
         return result;
     }, []);
-    if (countryList.length < 1) {
-        notFound(res);
-    }
-    res.status(200).json(countryList);
+    responseCountryList(res, countryList);
 };
