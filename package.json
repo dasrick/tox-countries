@@ -1,6 +1,6 @@
 {
   "name": "tox-countries",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "RESTful API for countries based on node.js",
   "author": "Enrico Hoffmann <dasrick@gmail.com>",
   "license": "MIT",
