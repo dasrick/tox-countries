@@ -30,7 +30,7 @@ exports.name = function (req, res) {
     var countryName = req.params.countryName;
     console.log(countryName);
     var countryList = _.reduce(countries, function (result, country) {
-        var nameList = _.map(country.translations, Function.call.bind("".toLowerCase));
+        var nameList = _.map(country.translations, Function.call.bind(''.toLowerCase));
         nameList.push(country.name.toLowerCase());
         nameList.push(country.nativeName.toLowerCase());
         if (validator.isIn(countryName.toLowerCase(), nameList)) {
