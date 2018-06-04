@@ -7,11 +7,9 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var favicon = require('serve-favicon');
 var errorHandler = require('errorhandler');
 var path = require('path');
-var opbeat = require('opbeat').start();
 
 
 /**
@@ -45,7 +43,6 @@ app.use(methodOverride());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), {maxAge: week}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(opbeat.middleware.express());
 
 
 /**

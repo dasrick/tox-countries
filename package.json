@@ -18,24 +18,18 @@
     "cookie-parser": "^1.4.3",
     "errorhandler": "^1.5.0",
     "express": "^4.15.2",
-    "express-session": "^1.15.1",
-    "express-validator": "^3.1.2",
+    "express-validator": "^5.2.0",
     "method-override": "^2.3.7",
     "morgan": "^1.8.1",
-    "opbeat": "^4.12.0",
     "path": "^0.12.7",
     "serve-favicon": "^2.4.1"
   },
   "devDependencies": {
-    "jscs": "^3.0.7",
-    "jshint": "^2.9.4",
-    "jshint-stylish": "^2.2.1"
+    "eslint": "^4.19.1"
   },
   "scripts": {
     "start": "node server.js",
     "test": "npm run lint",
-    "lint": "npm run jscs && npm run jshint",
-    "jscs": "jscs ./server.js ./controllers",
-    "jshint": "jshint ./server.js ./controllers --reporter node_modules/jshint-stylish/index.js"
+    "lint": "eslint ./"
   }
 }
