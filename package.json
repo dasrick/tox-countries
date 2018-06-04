@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "npm run lint",
     "lint": "npm run jscs && npm run jshint",
     "jscs": "jscs ./server.js ./controllers",
     "jshint": "jshint ./server.js ./controllers --reporter node_modules/jshint-stylish/index.js"
